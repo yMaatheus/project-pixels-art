@@ -3,22 +3,6 @@
     border: 1px solid black;
 }
 
-#black {
-    background-color: black;
-}
-
-#red {
-    background-color: red;
-}
-
-#blue {
-    background-color: blue;
-}
-
-#green {
-    background-color: green;
-}
-
 #pixel-board {
     border: 1px solid black;
     height: 226px;

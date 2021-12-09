@@ -1,6 +1,20 @@
 const colorPalette = document.querySelector("#color-palette");
 const pixelBoard = document.querySelector("#pixel-board");
 
+function paintColorsPalette() {
+    const blackColor = document.querySelector("#black");
+    blackColor.style.backgroundColor = "black";
+
+    const redColor = document.querySelector("#red");
+    redColor.style.backgroundColor = "red";
+
+    const blueColor = document.querySelector("#blue");
+    blueColor.style.backgroundColor = "blue";
+
+    const greenColor = document.querySelector("#green");
+    greenColor.style.backgroundColor = "green";
+}
+
 function pixelBoardCreateLines(heigth, width) {
     for (let index = 1; index <= heigth; index += 1) {
         const lineSection = document.createElement("section");
@@ -43,12 +57,14 @@ function changeSelected(event) {
 }
 
 function toPaintPixel(event) {
-    const pixel = event.target;
     const selected = document.querySelector(".selected");
+    console.log(selected);
+    console.log(selected.style.backgroundColor);
 
-    pixel.style.backgroundColor = selected.style.backgroundColor;
+    event.target.style.backgroundColor = selected.style.backgroundColor;
 }
 
+paintColorsPalette();
 pixelBoardCreateLines(5, 5);
 resetSelected();
 colorPalette.addEventListener("click", changeSelected);
