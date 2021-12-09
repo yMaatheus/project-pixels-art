@@ -1,6 +1,7 @@
-function pixelBoardCreateLines(heigth, width) {
-    const pixelBoard = document.querySelector("#pixel-board");
+const colorPalette = document.querySelector("#color-palette");
+const pixelBoard = document.querySelector("#pixel-board");
 
+function pixelBoardCreateLines(heigth, width) {
     for (let index = 1; index <= heigth; index += 1) {
         const lineSection = document.createElement("section");
         lineSection.id = "pixel-board-line-" + index;
@@ -17,4 +18,38 @@ function pixelBoardCreateLines(heigth, width) {
     }
 }
 
+function resetSelected() {
+    const blackColor = document.querySelector("#black");
+
+    if (document.getElementsByClassName("selected").length > 0) {
+        for (let element of document.getElementsByClassName("selected")) {
+            element.classList.remove("selected");
+        }
+    }
+
+    blackColor.classList.add("selected");
+}
+
+function changeSelected(event) {
+    let selected = document.getElementsByClassName("selected");
+    if (selected.length > 0) {
+        resetSelected();
+    }
+    if (event.target === selected) {
+        return;
+    }
+    selected[0].classList.remove("selected");
+    event.target.classList.add("selected");
+}
+
+function toPaintPixel(event) {
+    const pixel = event.target;
+    const selected = document.querySelector(".selected");
+
+    pixel.style.backgroundColor = selected.style.backgroundColor;
+}
+
 pixelBoardCreateLines(5, 5);
+resetSelected();
+colorPalette.addEventListener("click", changeSelected);
+pixelBoard.addEventListener("click", toPaintPixel);
