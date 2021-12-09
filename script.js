@@ -58,13 +58,28 @@ function changeSelected(event) {
 
 function toPaintPixel(event) {
     const selected = document.querySelector(".selected");
-    console.log(selected);
-    console.log(selected.style.backgroundColor);
+    const color = selected.style.backgroundColor;
+    if (!event.target.classList.contains("pixel")) {
+        return;
+    }
 
-    event.target.style.backgroundColor = selected.style.backgroundColor;
+    event.target.style.backgroundColor = color;
+}
+
+function clearPixelBoard() {
+    for (let element of document.getElementsByClassName("pixel")) {
+        element.style.backgroundColor = "white";
+    }
+}
+
+function loadClearButton() {
+    const button = document.querySelector("#clear-board");
+    button.innerText = "Limpar";
+    button.addEventListener("click", clearPixelBoard);
 }
 
 paintColorsPalette();
+loadClearButton();
 pixelBoardCreateLines(5, 5);
 resetSelected();
 colorPalette.addEventListener("click", changeSelected);
