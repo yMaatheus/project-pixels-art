@@ -1,7 +1,3 @@
-# Projeto Pixels Art
-
----
-
 ## Habilidades Desenvolvidas
 
 - Manipular o DOM
